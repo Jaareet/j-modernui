@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+        integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>jaareet</title>
+</head>
+
+<body>
+    <div id="app" v-if="!toggle">
+        <div class="hud" :style="{ transform: radar ? 'translateX(15vw)' : 'translateX(0)' }">
+            <div v-for="(value, key) in status" :key="key" :class="'box ' + key"
+                :style="{ animation: (key === 'voice' && microphone.talking) ? 'pulse 1s infinite' : 'none' }"
+                v-if="((key != 'health' && key != 'hunger' && key != 'thirst' && key != 'stamina') ? value > 0 : (key != 'health' && key != 'stamina' && key != 'hunger' && key != 'thirst') ? value < 100 : value < 100)">
+                <div class="box-content">
+                    <div class="box-icon">
+                        <i :class="'fad fa-' + (icons[key] ? icons[key] : 'user')"></i>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <div class="box-progress">
+                        <div class="box-inside-progress" :style="{ width: `${value}%` }"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

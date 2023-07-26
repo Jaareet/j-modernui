@@ -1,0 +1,80 @@
+head,
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    font-family: 'Roboto', sans-serif;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    image-rendering: optimizeSpeed;
+    user-select: none;
+    zoom: 90%;
+}
+
+.hud {
+    position: absolute;
+    bottom: 1vw;
+    left: 1.5vw;
+    display: flex;
+    gap: .25vw;
+    transition: .25s;
+}
+
+.box {
+    position: relative;
+    width: 3.4vw;
+    height: 2.5vw;
+    padding: .4vw 0;
+    background-color: rgb(0, 0, 0, .7);
+    border-radius: .25vw;
+    box-shadow: 0 0 .4vw #000;
+    display: grid;
+    place-items: center;
+}
+
+.box-content .box-icon i {
+    position: relative;
+    font-size: 1vw;
+    color: #fff;
+}
+
+.box-content {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 70%;
+}
+
+.box-content .box-progress {
+    position: relative;
+    width: 100%;
+    height: .25vw;
+    border-radius: 100vw;
+    background-color: rgb(255, 255, 255, .5);
+    overflow: hidden;
+}
+
+.box-content .box-progress .box-inside-progress {
+    position: relative;
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    transition: .25s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
